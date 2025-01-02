@@ -1,0 +1,29 @@
+[req]
+default_bits           = 4096
+prompt                 = no
+default_md             = sha256
+distinguished_name     = dn
+req_extensions         = v3_req
+
+[dn]
+C                      = CN  # 国家代码
+ST                     = Beijing # 省份
+L                      = Beijing # 城市
+O                      = Starlight Server # 组织名称
+OU                     = zly2006 # 部门
+CN                     = *.starlight.cool # Common Name (虽然现在不常用，但为了兼容性还是保留)
+
+[v3_req]
+basicConstraints       = CA:FALSE
+keyUsage               = digitalSignature, keyEncipherment
+extendedKeyUsage       = serverAuth
+subjectAltName         = @alt_names
+
+[alt_names]
+DNS.1                  = disy920.cn
+DNS.2                  = *.disy920.cn
+DNS.3                  = sls.wiki
+DNS.4                  = *.sls.wiki
+DNS.5                  = starlight.cool # 也要把CN加到SAN里
+DNS.6                  = *.starlight.cool
+
